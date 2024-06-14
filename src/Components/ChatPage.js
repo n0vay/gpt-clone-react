@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ChatWindow from "./ChatWindow";
 import InputBox from "./InputBox";
+import SearchPageWidget from "./SearchPageWidget";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -17,7 +18,12 @@ const ChatPage = () => {
   };
 
   return (
-    <div className="bg-[#212121] min-h-screen">
+    <div className="bg-[#212121]">
+      {messages.length === 0 && (
+        <div className="fixed top-1/4 left-1/3 ">
+          <SearchPageWidget />
+        </div>
+      )}
       <div className="flex flex-col h-screen items-center pb-20 overflow-y-auto">
         <div className="w-2/3 md:w-1/2 flex flex-col flex-1 ">
           <ChatWindow messages={messages} />
