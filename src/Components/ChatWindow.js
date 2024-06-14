@@ -17,7 +17,7 @@ const ChatWindow = ({ messages }) => {
           }`}
         >
           <div
-            className={`p-2 my-2 px-4 rounded-lg text-white max-w-xs inline-block ${
+            className={`p-2 my-2 px-4 rounded-lg text-white  inline-block ${
               msg.sender === "user"
                 ? "bg-[#2F2F2F] text-right rounded-full"
                 : ""

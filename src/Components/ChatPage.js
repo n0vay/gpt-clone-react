@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import ChatWindow from "./ChatWindow";
 import InputBox from "./InputBox";
 import SearchPageWidget from "./SearchPageWidget";
+import openai from "../utils/openAiInit";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
 
-  const sendMessage = (text) => {
+  const sendMessage = async (text) => {
     const newMessages = [...messages, { text, sender: "user" }];
     setMessages(newMessages);
-    setTimeout(() => {
-      setMessages([
-        ...newMessages,
-        { text: "This is a bot response", sender: "bot" },
-      ]);
-    }, 100);
+    const gptQuery = text;
+    const gptResults = await openai.chat.completions.create({
+      messages: [{ role: "user", content: gptQuery }],
+      model: "gpt-3.5-turbo",
+    });
+    if (!gptResults.choices) {
+      //TODO: Write Error Handling
+    }
+    const botResponse = gptResults.choices?.[0]?.message?.content;
+    setMessages([...newMessages, { text: botResponse, sender: "bot" }]);
+    
   };
 
   return (
