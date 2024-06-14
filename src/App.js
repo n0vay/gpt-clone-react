@@ -1,5 +1,8 @@
+import React from "react";
+import ChatPage from "./Components/ChatPage";
+
 function App() {
-  return <div className="bg-black">Hello World</div>;
+  return <ChatPage />;
 }
 
 export default App;
