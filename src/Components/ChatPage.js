@@ -20,7 +20,6 @@ const ChatPage = () => {
     }
     const botResponse = gptResults.choices?.[0]?.message?.content;
     setMessages([...newMessages, { text: botResponse, sender: "bot" }]);
-    
   };
 
   return (
