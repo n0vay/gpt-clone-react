@@ -14,13 +14,13 @@ const InputBox = ({ sendMessage }) => {
     <div className="p-2 flex bg-[#2F2F2F] rounded-full justify-center">
       <input
         type="text"
-        className="flex-1 px-2 rounded-l-lg  bg-[#2F2F2F] h-12 text-white focus:outline-none  "
+        className="flex-1 px-2 rounded-full bg-[#2F2F2F] h-12 text-white focus:outline-none  "
         value={input}
         placeholder="Message ChatGPT"
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSend()}
       />
-      <button  onClick={handleSend} className="px-2 bg-[#2F2F2F] rounded-full">
+      <button onClick={handleSend} className="px-2 bg-[#2F2F2F] rounded-full">
         <svg
           className="w-10"
           xmlns="http://www.w3.org/2000/svg"
